@@ -24,7 +24,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["getTask"]),
+    ...mapGetters('trelloBoard',["getTask"]),
     task() {
       return this.getTask(this.$route.params.id);
     },
@@ -37,14 +37,14 @@ export default {
   },
   methods: {
     updateTaskProperty(e, key) {
-      this.$store.commit("UPDATE_TASK", {
+      this.$store.commit("trelloBoard/UPDATE_TASK", {
         task: this.task,
         key,
         value: e.target.value
       });
     },
     deleteTask() {
-      this.$store.commit("DELETE_TASK", {
+      this.$store.commit("trelloBoard/DELETE_TASK", {
         taskIndex: this.taskIndex,
         columnIndex: this.columnIndex
       }) 

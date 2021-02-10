@@ -55,14 +55,14 @@ export default {
       e.dataTransfer.setData("type", "column");
     },
     createTask(e, tasks) {
-      this.$store.commit("CREATE_TASK", {
+      this.$store.commit("trelloBoard/CREATE_TASK", {
         tasks,
         name: e.target.value
       });
       e.target.value = "";
     },
     deleteColumn() {
-      this.$store.commit("DELETE_COLUMN", {
+      this.$store.commit("trelloBoard/DELETE_COLUMN", {
         columnIndex: this.columnIndex
       })
     }

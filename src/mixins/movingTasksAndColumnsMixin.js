@@ -24,7 +24,7 @@ export default {
     moveTask ({ fromColumnIndex, fromTaskIndex }) {
       const fromTasks = this.board.columns[fromColumnIndex].tasks
 
-      this.$store.commit('MOVE_TASK', {
+      this.$store.commit('trelloBoard/MOVE_TASK', {
         fromTasks,
         fromTaskIndex,
         toTasks: this.column.tasks,
@@ -32,7 +32,7 @@ export default {
       })
     },
     moveColumn ({ fromColumnIndex }) {
-      this.$store.commit('MOVE_COLUMN', {
+      this.$store.commit('trelloBoard/MOVE_COLUMN', {
         fromColumnIndex,
         toColumnIndex: this.columnIndex
       })

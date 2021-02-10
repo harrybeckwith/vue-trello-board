@@ -16,50 +16,46 @@
           placeholder="New Column Name"
           v-model="newColumnName"
           @keyup.enter="createColumn"
-        >
+        />
       </div>
     </div>
 
-    <div
-      class="task-bg"
-      v-if="isTaskOpen"
-      @click.self="close"
-    >
-      <router-view/>
+    <div class="task-bg" v-if="isTaskOpen" @click.self="close">
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import BoardColumn from '@/components/BoardColumn'
+import { mapState } from "vuex";
+import BoardColumn from "@/components/BoardColumn";
 
 export default {
   components: { BoardColumn },
-  data () {
+  data() {
     return {
-      newColumnName: ''
-    }
+      newColumnName: ""
+    };
   },
   computed: {
-    ...mapState(['board']),
-    isTaskOpen () {
-      return this.$route.name === 'task'
+    ...mapState("trelloBoard", ["board"]),
+    isTaskOpen() {
+      return this.$route.name === "task";
     }
   },
   methods: {
-    close () {
-      this.$router.push({ name: 'board' })
+    close() {
+      this.$router.push({ name: "board" });
     },
-    createColumn () {
-      this.$store.commit('CREATE_COLUMN', {
+    createColumn() {
+      this.$store.commit("trelloBoard/CREATE_COLUMN", {
         name: this.newColumnName
-      })
+      });
 
-      this.newColumnName = ''
+      this.newColumnName = "";
     }
   }
-}
+};
 </script>
 
 <style lang="css">
@@ -69,6 +65,6 @@ export default {
 
 .task-bg {
   @apply pin absolute;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 </style>

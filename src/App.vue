@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <header-component></header-component>
     <router-view/>
   </div>
 </template>
@@ -24,3 +25,12 @@ body, html {
   @apply mx-auto;
 }
 </style>
+<script>
+  import HeaderComponent from '@/components/HeaderComponent.vue';
+export default {
+  name: 'App',
+  components: {
+    HeaderComponent
+  }
+}
+</script>
