@@ -8,7 +8,7 @@
           <router-link to="/about">About</router-link>
         </li>
         <li>
-          <router-link to="/portfolio">Portfolio</router-link>
+          <router-link to="/board">Board</router-link>
         </li>
       </ul>
     </header>

@@ -12,18 +12,6 @@ export default {
           id: uuid(),
           userAssigned: null
         },
-        {
-          description: "",
-          name: "second task",
-          id: uuid(),
-          userAssigned: null
-        },
-        {
-          description: "",
-          name: "and thrid",
-          id: uuid(),
-          userAssigned: null
-        }
       ]
     },
     {
