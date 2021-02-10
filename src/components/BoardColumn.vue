@@ -1,7 +1,5 @@
 <template>
-  <AppDrop
-    @drop="moveTaskOrColumn"
-  >
+  <AppDrop @drop="moveTaskOrColumn">
     <AppDrag
       class="column"
       :transferData="{
@@ -9,8 +7,9 @@
         fromColumnIndex: columnIndex
       }"
     >
-      <div class="flex items-center mb-2 font-bold">
-        {{ column.name }}
+      <div class="flex items-center mb-2 font-bold justify-between">
+        <p>{{ column.name }}</p>
+        <p @click="deleteColumn">delete</p>
       </div>
       <div class="list-reset">
         <ColumnTask
@@ -35,10 +34,10 @@
 </template>
 
 <script>
-import ColumnTask from './ColumnTask'
-import AppDrag from './AppDrag'
-import AppDrop from './AppDrop'
-import movingTasksAndColumnsMixin from '@/mixins/movingTasksAndColumnsMixin'
+import ColumnTask from "./ColumnTask";
+import AppDrag from "./AppDrag";
+import AppDrop from "./AppDrop";
+import movingTasksAndColumnsMixin from "@/mixins/movingTasksAndColumnsMixin";
 
 export default {
   components: {
@@ -48,22 +47,27 @@ export default {
   },
   mixins: [movingTasksAndColumnsMixin],
   methods: {
-    pickupColumn (e, fromColumnIndex) {
-      e.dataTransfer.effectAllowed = 'move'
-      e.dataTransfer.dropEffect = 'move'
+    pickupColumn(e, fromColumnIndex) {
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.dropEffect = "move";
 
-      e.dataTransfer.setData('from-column-index', fromColumnIndex)
-      e.dataTransfer.setData('type', 'column')
+      e.dataTransfer.setData("from-column-index", fromColumnIndex);
+      e.dataTransfer.setData("type", "column");
     },
-    createTask (e, tasks) {
-      this.$store.commit('CREATE_TASK', {
+    createTask(e, tasks) {
+      this.$store.commit("CREATE_TASK", {
         tasks,
         name: e.target.value
+      });
+      e.target.value = "";
+    },
+    deleteColumn() {
+      this.$store.commit("DELETE_COLUMN", {
+        columnIndex: this.columnIndex
       })
-      e.target.value = ''
     }
   }
-}
+};
 </script>
 
 <style lang="css">

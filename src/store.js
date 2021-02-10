@@ -34,9 +34,9 @@ export default new Vuex.Store({
       });
     },
     DELETE_TASK(state, { taskIndex, columnIndex }) {
-      console.log(taskIndex);
-      console.log(columnIndex);
-
+      // use found column index
+      // use task index inside column
+      // remove from state
     state.board.columns[columnIndex].tasks.splice(taskIndex, 1);
 
     },
@@ -46,6 +46,10 @@ export default new Vuex.Store({
         tasks: []
       });
     },
+    DELETE_COLUMN(state, {columnIndex}) {
+      // delete whole column based on columnIndex
+      this.state.board.columns.splice(columnIndex, 1)
+;    },
     UPDATE_TASK(state, { task, key, value }) {
       task[key] = value;
     },
