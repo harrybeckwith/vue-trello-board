@@ -1,0 +1,33 @@
+html {
+    background: #8c21e1;;
+    padding: 5px;
+}
+
+body {
+    min-height: 100vh;
+    background: #fff;
+}
+
+body:before {
+    top: 0;
+}
+
+body:before, body:after {
+    display: block;
+    height: 5px;
+    background: #8c21e1;
+    content: '';
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+body:after {
+    bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
