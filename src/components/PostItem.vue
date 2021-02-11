@@ -52,4 +52,11 @@ export default {
     margin-right: auto;
   }
 }
+
+@media (min-width: 1024px) { 
+  .post-item {
+    width: 60%;
+  }
+  
+ }
 </style>
