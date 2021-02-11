@@ -1,9 +1,10 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import Board from './views/Board.vue'
-import Task from './views/Task.vue'
-import Home from './views/Home.vue'
-import Posts from './views/Posts.vue'
+import Router from 'vue-router';
+
+ const Board = () =>  import('./views/Board.vue')
+ const Task = () =>  import('./views/Task.vue')
+ const Home = () =>  import('./views/Home.vue')
+ const Posts = () =>  import('./views/Posts.vue')
 
 Vue.use(Router)
 
