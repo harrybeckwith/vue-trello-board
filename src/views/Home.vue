@@ -1,12 +1,14 @@
 <template>
-  <div class="flex justify-between">
-    <CardComponent
-      v-for="topic in blogTopics"
-      :key="topic.title"
-      :image-url="topic.logo"
-      :title="topic.title"
-    >
-    </CardComponent>
+  <div class="container">
+    <div class="flex justify-between">
+      <CardComponent
+        v-for="topic in blogTopics"
+        :key="topic.title"
+        :image-url="topic.logo"
+        :title="topic.title"
+      >
+      </CardComponent>
+    </div>
   </div>
 </template>
 
@@ -25,27 +27,6 @@ export default {
   },
   components: {
     CardComponent
-  },
-  computed: {
-    ...mapGetters("devTo", [
-      "devToData"
-      // Here you can import other getters from the products.js
-    ])
-  },
-  methods: {
-    ...mapActions("devTo", ["storeDevToData"]),
-    callDevTo() {
-      fetch("https://dev.to/api/articles?username=hjames")
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          this.storeDevToData(data);
-        })
-        .catch(error => console.log(error));
-    }
-  },
-  mounted() {
-    this.callDevTo();
   }
 };
 </script>
